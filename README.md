@@ -1,4 +1,4 @@
-# MyFirstApp
+# The project with forms for sustainable milk production 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
