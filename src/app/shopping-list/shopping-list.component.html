@@ -41,24 +41,42 @@
           <div *ngIf="f.file.errors.required">File is required.</div>
       </div>
   </div>
-   
-  <img [src]="imageSrc" *ngIf="imageSrc" style="width:500px"><br/>
-       
+
   <button class="btn btn-primary" type="submit">Submit</button>
+  
+  <div [style.visibility]="(fileLoaded == false) ? 'hidden' : 'visible' "> 
+    <table [style.visibility]="(fileLoaded == false) ? 'hidden' : 'visible' ">
+      <tr>
+        <td>
+        <div width="50%">
+          <img [src]="imageSrc" *ngIf="imageSrc" style="width:500px"><br/>
+        </div>
+      </td>
+      <td>
+        <div width="50%" [style.visibility]="(analysed == false) ? 'hidden' : 'visible' ">
+          Based on current and historical data, Cow {{ name.value }} seems to have :
+          <ul>
+            <li>dehydratation, and seems to have to much corn in her current diet
+            </li>
+          </ul>
+          <b>Recommendation :</b><br/>
+          For the upcoming day, cow {{ name.value }} should : <br/>
+          <ul>
+            <li>Have a diet based 50% on corn, 30% on grass, 20% on hay</li>
+            <li>Give 20% more water</li>
+          </ul>
+          <br/>
+          By doing this, compare to today, you will likely :
+          <ul>
+            <li>improve by 2% milk production</li>
+            <li>Reduce by 10% compared methanes emissions</li>
+          </ul>
+        </div>
+      
+      </td>
+    </tr>
+  
+</table> 
+  </div>
+
 </form>
-
-<div [style.visibility]="(analysed == false) ? 'hidden' : 'visible' ">
-Based on current and historical data, Cow {{ name.value }} seems to have :
-
-<li>dehydratation, and seems to have to much corn in her current diet
-</li>
-
-Recommendation :<br/>
-For the upcoming day, cow {{ name.value }} should : <br/>
-<li>Have a diet based 50% on corn, 30% on grass, 20% on hay</li>
-<li>Give 20% more water</li>
-<br/>
-By doing this, compare to today, you will likely :
-<li>improve by 2% milk production</li>
-<li>Reduce by 10% compared methanes emissions</li>
-</div>

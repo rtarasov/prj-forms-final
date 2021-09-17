@@ -47,7 +47,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     return this.myForm.controls;
   }
 
-  analysed: Boolean = false
+  analysed = false
+  fileLoaded = false
   //name: String = 'XXXXXX'
 
   @ViewChild('name', {static: true}) name: ElementRef;
@@ -60,6 +61,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       const [file] = event.target.files;
       //this.name = this.myForm.value.name;
       //this.name = event.target.
+      this.fileLoaded = true;
       reader.readAsDataURL(file);
       
       reader.onload = () => {
