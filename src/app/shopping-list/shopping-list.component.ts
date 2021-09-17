@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Field } from '../shared/field.model';
@@ -46,12 +46,20 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   get f(){
     return this.myForm.controls;
   }
+
+  analysed: Boolean = false
+  //name: String = 'XXXXXX'
+
+  @ViewChild('name', {static: true}) name: ElementRef;
     
   onFileChange(event) {
     const reader = new FileReader();
+    this.analysed = false
       
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
+      //this.name = this.myForm.value.name;
+      //this.name = event.target.
       reader.readAsDataURL(file);
       
       reader.onload = () => {
@@ -69,6 +77,9 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     
   submit(){
     console.log(this.myForm.value);
+    this.analysed = true
+
+
     /*
     this.http.post('http://localhost:8001/upload.php', this.myForm.value)
       .subscribe(res => {

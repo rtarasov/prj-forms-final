@@ -17,7 +17,18 @@
 -->
 
 <form [formGroup]="myForm" (ngSubmit)="submit()">
-  
+  <div class="form-group">
+    <label for="name">Cow ID</label>
+    <input
+        formControlName="name"
+        id="name"
+        type="text"
+        class="form-control" #name>
+    <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+        <div *ngIf="f.name.errors.required">ID is required.</div>
+        <div *ngIf="f.name.errors.minlength">ID should be 3 character.</div>
+    </div>
+</div>
   <div class="form-group">
       <label for="file">File</label>
       <input
@@ -35,3 +46,19 @@
        
   <button class="btn btn-primary" type="submit">Submit</button>
 </form>
+
+<div [style.visibility]="(analysed == false) ? 'hidden' : 'visible' ">
+Based on current and historical data, Cow {{ name.value }} seems to have :
+
+<li>dehydratation, and seems to have to much corn in her current diet
+</li>
+
+Recommendation :<br/>
+For the upcoming day, cow {{ name.value }} should : <br/>
+<li>Have a diet based 50% on corn, 30% on grass, 20% on hay</li>
+<li>Give 20% more water</li>
+<br/>
+By doing this, compare to today, you will likely :
+<li>improve by 2% milk production</li>
+<li>Reduce by 10% compared methanes emissions</li>
+</div>
