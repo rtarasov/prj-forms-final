@@ -1,5 +1,5 @@
 import { Field } from '../shared/field.model';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 export class ShoppingListService {
   fieldsChanged = new Subject<Field[]>();
